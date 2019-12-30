@@ -17,9 +17,9 @@
             <label for="s">S</label>
             <input type="range" name="Saturation" id="s">
         </div>
-        <div class="slider" oninput="slide('b')">
-            <label for="b">B</label>
-            <input type="range" name="Brightness" id="b">
+        <div class="slider" oninput="slide('l')">
+            <label for="l">L</label>
+            <input type="range" name="Luminosity" id="l">
         </div>
     </div>
     <script>
@@ -27,7 +27,7 @@
         var sliders = {
             'h': document.getElementById('h'),
             's': document.getElementById('s'),
-            'b': document.getElementById('b')
+            'l': document.getElementById('l')
         };
 
         function slide(slider) {
