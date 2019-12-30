@@ -11,29 +11,39 @@
     <div class="controls">
         <div class="slider" oninput="slide('h')">
             <label for="h">H</label>
-            <input type="range" name="Hue" id="h">
+            <input type="range" name="Hue" id="h" min="0" max="360" value="270">
         </div>
         <div class="slider" oninput="slide('s')">
             <label for="s">S</label>
-            <input type="range" name="Saturation" id="s">
+            <input type="range" name="Saturation" id="s" value="50">
         </div>
         <div class="slider" oninput="slide('l')">
             <label for="l">L</label>
-            <input type="range" name="Luminosity" id="l">
+            <input type="range" name="Luminosity" id="l" value="40">
         </div>
     </div>
     <script>
         var body = document.getElementsByTagName('body')[0]
         var sliders = {
-            'h': document.getElementById('h'),
-            's': document.getElementById('s'),
-            'l': document.getElementById('l')
+            'h': {
+                element: document.getElementById('h'),
+                value: 270
+            },
+            's': {
+                element: document.getElementById('s'),
+                value: 50
+            },
+            'l': {
+                element: document.getElementById('l'),
+                value: 40
+            }
         };
 
-        function slide(slider) {
-            let value = sliders[slider].value;
-            console.log(value);
-            body.style.backgroundColor = value > 50 ? 'black' : 'rebeccapurple';
+        function slide(sliderName) {
+            let slider = sliders[sliderName]
+            let value = slider.element.value;
+            slider.value = value;
+            body.style.backgroundColor = 'hsl(' + sliders.h.value + ', ' + sliders.s.value + '%, ' + sliders.l.value + '%)';
         }
     </script>
 </body>
