@@ -9,18 +9,32 @@
 </head>
 <body>
     <div class="controls">
-        <div class="slider">
+        <div class="slider" oninput="slide('h')">
             <label for="h">H</label>
             <input type="range" name="Hue" id="h">
         </div>
-        <div class="slider">
+        <div class="slider" oninput="slide('s')">
             <label for="s">S</label>
             <input type="range" name="Saturation" id="s">
         </div>
-        <div class="slider">
+        <div class="slider" oninput="slide('b')">
             <label for="b">B</label>
             <input type="range" name="Brightness" id="b">
         </div>
     </div>
+    <script>
+        var body = document.getElementsByTagName('body')[0]
+        var sliders = {
+            'h': document.getElementById('h'),
+            's': document.getElementById('s'),
+            'b': document.getElementById('b')
+        };
+
+        function slide(slider) {
+            let value = sliders[slider].value;
+            console.log(value);
+            body.style.backgroundColor = value > 50 ? 'black' : 'rebeccapurple';
+        }
+    </script>
 </body>
 </html>
